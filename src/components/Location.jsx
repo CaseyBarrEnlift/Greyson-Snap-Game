@@ -33,7 +33,10 @@ export default function Location({
     setIsDragOver(true)
   }
 
-  function handleDragLeave() { setIsDragOver(false) }
+  function handleDragLeave(e) {
+    if (e.currentTarget.contains(e.relatedTarget)) return
+    setIsDragOver(false)
+  }
 
   function handleDrop(e) {
     e.preventDefault()
@@ -48,7 +51,7 @@ export default function Location({
 
   return (
     <div
-      className={`location ${isDragOver ? 'drop-target' : ''}`}
+      className="location"
       style={{ '--loc-gradient': locDef.gradient }}
     >
       {/* Location header */}
@@ -104,7 +107,7 @@ export default function Location({
 
       {/* Player side — drop target */}
       <div
-        className="location-side player-side"
+        className={`location-side player-side${isDragOver ? ' drop-target' : ''}`}
         onClick={handleClickSide}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -124,6 +127,9 @@ export default function Location({
             />
           ))}
         </div>
+        {locState.cards.player.length === 0 && (
+          <div className="player-side-hint">Drag here<br />or click to play</div>
+        )}
         <div className="location-side-label">YOU</div>
       </div>
     </div>

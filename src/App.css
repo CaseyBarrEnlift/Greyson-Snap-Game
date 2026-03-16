@@ -418,9 +418,10 @@ button {
   transition: border-color var(--transition);
 }
 
-.location.drop-target {
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.3);
+.location-side.player-side.drop-target {
+  background: rgba(74, 158, 255, 0.12);
+  outline: 2px solid var(--accent-blue);
+  outline-offset: -2px;
 }
 
 .location-header {
@@ -542,6 +543,15 @@ button {
   letter-spacing: 1px;
 }
 
+.player-side-hint {
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  text-align: center;
+  pointer-events: none;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
 /* ─── CARD ───────────────────────────────────────────────────────────────────── */
 .card {
   position: relative;
@@ -564,6 +574,7 @@ button {
   border-radius: var(--card-radius);
   transform-style: preserve-3d;
   transition: transform 0.5s ease;
+  pointer-events: none;
 }
 
 .card-front,
@@ -777,6 +788,14 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
+}
+
+.hand-hint {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 .played-queue-area {

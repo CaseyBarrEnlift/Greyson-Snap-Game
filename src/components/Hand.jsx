@@ -133,6 +133,7 @@ export default function Hand({
       {/* Hand cards */}
       <div className="hand-row">
         <span className="hand-label">Hand ({hand.length})</span>
+        <span className="hand-hint">Drag a card to a location, or click card → location</span>
         {hand.map(card => (
           <Card
             key={card.instanceId}
